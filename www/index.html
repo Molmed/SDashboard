@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html class="full" lang="en">
+<!-- The full page image background will only work if the html has the custom class set to it! Don't delete it! -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SDashboard</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS for the 'Full' Template -->
+    <link href="css/full.css" rel="stylesheet">
+    
+    <script src="shared/jquery.js" type="text/javascript"></script>
+    <script src="shared/shiny.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="shared/shiny.css"/> 
+    
+    <!--Refresh page every hour -->
+    <script type="text/javascript">
+      setTimeout("location.reload(true);",1000 * 3600);
+    </script>
+    
+</head>
+
+<body>
+
+    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--TODO: Check this link -->
+                <a class="navbar-brand" href="index.php">SDashboard</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                <!--
+                    <li><a href="#about">About</a>
+                    </li>
+                    <li><a href="#services">Services</a>
+                    </li>
+                    <li><a href="#contact">Contact</a>
+                    </li>
+                  -->  
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page content goes here -->    
+    
+    <div class="container">
+  
+      <div class="row">
+        
+        <div class="col-md-10 panel panel-default">    
+        <center><h1> GB per week </h1></center>
+          <div id="weekplot" class="shiny-plot-output" 
+            style="width: 100%; height: 400px"></div>              
+        </div>        
+        
+        <div class="col-md-10 panel panel-default">          
+            <center><h1> GB per month </h1></center>
+            <div id="monthplot" class="shiny-plot-output" 
+                 style="width: 100%; height: 400px"></div>                      
+        </div>
+        
+        <div class="col-md-10 panel panel-default">          
+            <center><h1> Cumulative GB per month </h1></center>
+            <div id="cumulativeplot" class="shiny-plot-output" 
+                 style="width: 100%; height: 400px"></div>                      
+        </div>        
+        
+        <div class="col-md-10 panel panel-default">          
+            <center><h1> Cumulative GB per month per HiSeq </h1></center>
+            <div id="cumulativeplotperinstrument" class="shiny-plot-output" 
+                 style="width: 100%; height: 400px"></div>                      
+        </div>        
+        
+        <div class="col-md-10 panel panel-default">          
+            <center><h1> Cumulative GB per month per MiSeq </h1></center>
+            <div id="cumulativeplotperinstrumentforMiSeq" class="shiny-plot-output" 
+                 style="width: 100%; height: 400px"></div>                      
+        </div>        
+        
+        <div class="col-md-10 panel panel-default">          
+            <center><h1> 12 month error rates per instrument</h1></center>
+            <div id="errorrateplot" class="shiny-plot-output" 
+                 style="width: 100%; height: 400px"></div>                      
+        </div>        
+        
+        <div class="col-md-10 panel panel-default">          
+            <center><h1> 12 month % Q30 per instrument</h1></center>
+            <div id="percentq30plot" class="shiny-plot-output" 
+                 style="width: 100%; height: 400px"></div>                      
+        </div>        
+
+        <div class="col-md-10 panel panel-default">          
+            <center><h1> 12 month mean quality per instrument</h1></center>
+            <div id="meanqualityplot" class="shiny-plot-output" 
+                 style="width: 100%; height: 400px"></div>                      
+        </div>   
+
+        <div class="col-md-10 panel panel-default">          
+            <center><h1> Cumulative number of samples</h1></center>
+            <div id="cumulativesamples" class="shiny-plot-output" 
+                 style="width: 100%; height: 400px"></div>                      
+        </div>   
+
+        <div class="col-md-10 panel panel-default">          
+            <center><h1> Total number of samples per year</h1></center>
+            <div id="cumulativesamplesyeartotal" class="shiny-plot-output" 
+                 style="width: 100%; height: 400px"></div>                      
+        </div>   
+        
+        <div class="col-md-10 panel panel-default">          
+            <center><h1> Number of projects per year</h1></center>
+            <div id="cumulativeprojects" class="shiny-plot-output" 
+                 style="width: 100%; height: 400px"></div>                      
+        </div>   
+
+      </div>    
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+
+
+</body>
+
+</html>

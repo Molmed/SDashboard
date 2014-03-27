@@ -1,0 +1,16 @@
+body {
+	margin-top: 50px; /* 50px is the height of the navbar - change this if the navbarn height changes */
+  background-color: rgba(0,0,0,0.0);
+}
+
+.full {
+  background: url(../images/robot.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.panel {
+  margin: 10px;
+}
