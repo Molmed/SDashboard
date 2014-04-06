@@ -26,6 +26,8 @@ library(reshape2)
 source("config.R")
 source("data.R")
 
+months <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
 # Suppress warnings. Make sure that this is reenabled when debugging.
 # The production variable is loaded from the config.R file.
 if(production)
@@ -58,8 +60,8 @@ shinyServer(function(input, output) {
     
     p <- ggplot(data = aggregated.data, aes(x = Month, y = GB, fill = Year)) + 
       geom_bar(position="dodge", stat="identity") +
-      scale_x_discrete(breaks = c(1,2,3,4,5,6,7,8,9,10,11,12), limits = c(1,2,3,4,5,6,7,8,9,10,11,12),
-                       labels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec")) +
+      scale_x_discrete(breaks = c(1:12), limits = c(1:12),
+                       labels = months) +
       ylab("Giga bases sequenced")
     
     print(p)
@@ -87,8 +89,8 @@ shinyServer(function(input, output) {
     
     p <- ggplot(data = cumulative.results, aes(x = Month, y = cumulativeGB)) + 
       geom_line(size = 2, aes(colour = Year)) +
-      scale_x_discrete(breaks = c(1,2,3,4,5,6,7,8,9,10,11,12), 
-                       labels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec")) +
+      scale_x_discrete(breaks = c(1:12), 
+                       labels = months) +
       ylab("Giga bases sequenced")
     
     print(p)
@@ -135,8 +137,8 @@ shinyServer(function(input, output) {
     
     p <- ggplot(data = cumulative.results, aes(x = Month, y = cumulativeGB)) +         
       geom_line(size = 2, aes(colour = Year)) +
-      scale_x_discrete(breaks = c(1,2,3,4,5,6,7,8,9,10,11,12), 
-                       labels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec")) +
+      scale_x_discrete(breaks = c(1:12), 
+                       labels = months) +
       ylab("Giga bases sequenced") +
       theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
       facet_grid(. ~ Instrument)
@@ -153,8 +155,8 @@ shinyServer(function(input, output) {
     
     p <- ggplot(data = cumulative.results, aes(x = Month, y = cumulativeGB)) +         
       geom_line(size = 2, aes(colour = Year)) +
-      scale_x_discrete(breaks = c(1,2,3,4,5,6,7,8,9,10,11,12), 
-                       labels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec")) +
+      scale_x_discrete(breaks = c(1:12), 
+                       labels = months) +
       ylab("Giga bases sequenced") +
       theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
       facet_grid(. ~ Instrument)
@@ -177,8 +179,8 @@ shinyServer(function(input, output) {
     p <- ggplot(data = quality.metrics.m, aes(x = Month, y = value, colour = Year)) +
       geom_boxplot() +
       facet_grid(. ~ Instrument) +
-      scale_x_discrete(breaks = c(1,2,3,4,5,6,7,8,9,10,11,12), 
-                       labels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec")) +
+      scale_x_discrete(breaks = c(1:12), 
+                       labels = months) +
       theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
       ylab("Error Rate")
     
@@ -199,8 +201,8 @@ shinyServer(function(input, output) {
     p <- ggplot(data = quality.metrics.m, aes(x = Month, y = value, colour = Year)) +
       geom_boxplot() +
       facet_grid(. ~ Instrument) +
-      scale_x_discrete(breaks = c(1,2,3,4,5,6,7,8,9,10,11,12), 
-                       labels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec")) +
+      scale_x_discrete(breaks = c(1:12), 
+                       labels = months) +
       theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
       ylab("Percent Q30")
     
@@ -221,8 +223,8 @@ shinyServer(function(input, output) {
     p <- ggplot(data = quality.metrics.m, aes(x = Month, y = value, colour = Year)) +
       geom_boxplot() +
       facet_grid(. ~ Instrument) +
-      scale_x_discrete(breaks = c(1,2,3,4,5,6,7,8,9,10,11,12), 
-                       labels = c("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec")) +
+      scale_x_discrete(breaks = c(1:12), 
+                       labels = months) +
       theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
       ylab("Mean Quality")
     
