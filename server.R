@@ -42,7 +42,7 @@ shinyServer(function(input, output) {
     x <- queryGigaBasesPerWeek(current.year)
     giga.bases.per.week.m <- melt(x , id.vars=c("Instrument", "Week"), measure.vars=c("GB"))
     
-    p <- ggplot(data=giga.bases.per.week.m, aes(x = Week, y = value)) + 
+    p <- ggplot(data=giga.bases.per.week.m, aes(x = Week, y = as.numeric(value))) + 
       geom_bar(stat="identity", aes(fill=Instrument)) +
       ylab("Giga bases sequenced")
     
@@ -55,7 +55,7 @@ shinyServer(function(input, output) {
     current.year <- as.numeric(format(Sys.time(), "%Y"))    
     giga.bases.per.month.m <- melt(queryGigaBasesPerMonth(2012, current.year), id.vars=c("Instrument","Month","Year"), measure.vars=c("GB"))
     giga.bases.per.month.m$Year <- as.factor(giga.bases.per.month.m$Year)        
-    aggregated.data <- aggregate(giga.bases.per.month.m$value, by=list(giga.bases.per.month.m$Year, giga.bases.per.month.m$Month), sum)
+    aggregated.data <- aggregate(as.numeric(giga.bases.per.month.m$value), by=list(giga.bases.per.month.m$Year, giga.bases.per.month.m$Month), sum)
     colnames(aggregated.data) <- c("Year", "Month", "GB")
     
     p <- ggplot(data = aggregated.data, aes(x = Month, y = GB, fill = Year)) + 
@@ -73,7 +73,7 @@ shinyServer(function(input, output) {
     current.year <- as.numeric(format(Sys.time(), "%Y"))    
     giga.bases.per.month.m <- melt(queryGigaBasesPerMonth(2012, current.year), id.vars=c("Instrument","Month","Year"), measure.vars=c("GB"))
     giga.bases.per.month.m$Year <- as.factor(giga.bases.per.month.m$Year)        
-    aggregated.data <- aggregate(giga.bases.per.month.m$value, by=list(giga.bases.per.month.m$Year, giga.bases.per.month.m$Month), sum)
+    aggregated.data <- aggregate(as.numeric(giga.bases.per.month.m$value), by=list(giga.bases.per.month.m$Year, giga.bases.per.month.m$Month), sum)
     colnames(aggregated.data) <- c("Year", "Month", "GB")
     
     split.by.year <- split(aggregated.data, aggregated.data$Year)
@@ -110,9 +110,9 @@ shinyServer(function(input, output) {
     current.year <- as.numeric(format(Sys.time(), "%Y"))    
     giga.bases.per.month.m <- melt(queryGigaBasesPerMonth(2012, current.year), id.vars=c("Instrument","Month","Year"), measure.vars=c("GB"))
     giga.bases.per.month.m$Year <- as.factor(giga.bases.per.month.m$Year)        
-    aggregated.data <- aggregate(giga.bases.per.month.m$value, by=list(giga.bases.per.month.m$Year,
-                                                                       giga.bases.per.month.m$Month,
-                                                                       giga.bases.per.month.m$Instrument),
+    aggregated.data <- aggregate(as.numeric(giga.bases.per.month.m$value), by=list(giga.bases.per.month.m$Year,
+                                                                                   giga.bases.per.month.m$Month,
+                                                                                   giga.bases.per.month.m$Instrument),
                                  sum)
     colnames(aggregated.data) <- c("Year", "Month", "Instrument", "GB")
     
