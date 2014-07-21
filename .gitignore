@@ -6,3 +6,4 @@
 
 # Make sure config file is not commited by misstake
 config.R
+.Rproj.user
