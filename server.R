@@ -132,8 +132,8 @@ shinyServer(function(input, output) {
   output$cumulativeplotperinstrument <- renderPlot({    
     
     cumulative.results <- cumulativeGBPerInstrumentData() 
-    # Exclude the MiSeqs
-    cumulative.results <- cumulative.results[!grepl("*MiSeq*", cumulative.results$Instrument),]
+    # Exclude the MiSeqs and HiSeqX
+    cumulative.results <- cumulative.results[!grepl("*MiSeq*|*HiSeqX*", cumulative.results$Instrument),]
     
     p <- ggplot(data = cumulative.results, aes(x = Month, y = cumulativeGB)) +         
       geom_line(size = 2, aes(colour = Year)) +
@@ -145,6 +145,24 @@ shinyServer(function(input, output) {
     
     print(p)
   })  
+
+# Plot the cumulativ data for the HiSeqs
+  output$cumulativeplotperinstrumentforHiSeqX <- renderPlot({
+
+    cumulative.results <- cumulativeGBPerInstrumentData()
+    # Only include the HiSeqXs
+    cumulative.results <- cumulative.results[grepl("*HiSeqX*", cumulative.results$Instrument),]
+
+    p <- ggplot(data = cumulative.results, aes(x = Month, y = cumulativeGB)) +
+      geom_line(size = 2, aes(colour = Year)) +
+      scale_x_discrete(breaks = c(1:12),
+                       labels = months) +
+      ylab("Giga bases sequenced") +
+      theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+      facet_grid(. ~ Instrument)
+
+    print(p)
+  })
   
   # Plot the cumulativ data for the MiSeqs
   output$cumulativeplotperinstrumentforMiSeq <- renderPlot({    
