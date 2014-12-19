@@ -133,7 +133,7 @@ shinyServer(function(input, output) {
     
     cumulative.results <- cumulativeGBPerInstrumentData() 
     # Exclude the MiSeqs and HiSeqX
-    cumulative.results <- cumulative.results[!grepl("*MiSeq*|*HiSeqX*", cumulative.results$Instrument),]
+    cumulative.results <- cumulative.results[grepl("*HiSeq \\d", cumulative.results$Instrument),]
     
     p <- ggplot(data = cumulative.results, aes(x = Month, y = cumulativeGB)) +         
       geom_line(size = 2, aes(colour = Year)) +
@@ -151,7 +151,7 @@ shinyServer(function(input, output) {
 
     cumulative.results <- cumulativeGBPerInstrumentData()
     # Only include the HiSeqXs
-    cumulative.results <- cumulative.results[grepl("*HiSeqX*", cumulative.results$Instrument),]
+    cumulative.results <- cumulative.results[grepl("HiSeqX \\d", cumulative.results$Instrument),]
 
     p <- ggplot(data = cumulative.results, aes(x = Month, y = cumulativeGB)) +
       geom_line(size = 2, aes(colour = Year)) +
