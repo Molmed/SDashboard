@@ -58,8 +58,8 @@ parseOutInstrumentName <- function(df) {
   
   
   instrument.translation.table <-
-    data.frame(UniqueIdentifier=c("SN344", "SN866", "SN7001335", "D00118", "D00457", "D00458", "ST-E00215", "ST-E00216", "M00485", "M00629"),
-               Instrument=c("HiSeq 1","HiSeq 2", "HiSeq 3", "HiSeq 4", "HiSeq 5", "HiSeq 6", "HiSeqX 1", "HiSeqX 2", "MiSeq 1", "MiSeq 2"))
+    data.frame(UniqueIdentifier=c("SN344", "SN866", "SN7001335", "D00118", "D00457", "D00458", "ST-E00215", "ST-E00216", "ST-E00274", "ST-E00279", "ST-E00280","M00485", "M00629"),
+               Instrument=c("HiSeq 1","HiSeq 2", "HiSeq 3", "HiSeq 4", "HiSeq 5", "HiSeq 6", "HiSeqX 1", "HiSeqX 2", "HiSeqX 3", "HiSeqX 4", "HiSeqX 5","MiSeq 1", "MiSeq 2"))
   
   tmp.uniq.identifiers <- data.frame(UniqueIdentifier = do.call(rbind, strsplit(as.character(df$runfolder_name),"_"))[, 2])
   
