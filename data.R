@@ -62,7 +62,7 @@ parseOutInstrumentName <- function(df) {
   
   ExtractSecondElement <- function(x) lapply(x, function(x) x[2])
   
-  tmp.list <- strsplit(as.character(df.Dates.id$runfolder_name),"_")
+  tmp.list <- strsplit(as.character(df$runfolder_name),"_")
   
   tmp.uniq.identifiers <- data.frame(UniqueIdentifier = do.call(rbind, ExtractSecondElement(tmp.list)))
   
