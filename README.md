@@ -1,3 +1,6 @@
+Archived: This application is not used anymore
+==========
+
 SDashboard
 ==========
 SDashboard is a [Shiny](http://www.rstudio.com/shiny/) app which visualizes a number of metrics from the sequencing operation at the [SNP&SEQ technology platform](http://www.molmed.medsci.uu.se/SNP+SEQ+Technology+Platform/) in Uppsala. It is probably of relatively little interest to the outside world since the 'data.R' file which serves as the applications data layer is quite specific to our needs. However, if you have ideas on how to generalize it, don't hesitate to get in touch with us.
